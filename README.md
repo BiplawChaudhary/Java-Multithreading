@@ -22,5 +22,7 @@ This repo contains the code done while learning multithreading in Java.
     </ul>
 </li>
 
+<li><b>Thread Priorities:</b> To set a thread’s priority, use the <b><i>setPriority()</i></b> method, which is a member of Thread. </li>
+
 </ul>
 
