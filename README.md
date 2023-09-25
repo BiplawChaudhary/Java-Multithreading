@@ -24,5 +24,14 @@ This repo contains the code done while learning multithreading in Java.
 
 <li><b>Thread Priorities:</b> To set a thread’s priority, use the <b><i>setPriority()</i></b> method, which is a member of Thread. </li>
 
+<li><b>Synchronization:</b> When two or more threads need access to a shared resource, they need some way to ensure 
+that the resource will be used by only one thread at a time. The process by which this is 
+achieved is called <i>synchronization</i>. There is <b><i>NotSynchronized.java</i></b> file to demonstrate what happens when the methods are not synchronized.
+    <ul>
+        <li><b> :</b></li>
+        <li><b> :</b></li>
+    </ul>
+</li>
+
 </ul>
 
