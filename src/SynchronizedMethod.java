@@ -1,15 +1,10 @@
 
-//Program to demonstrate the unsynchronized thread
-/*
-In this program,
-nothing exists to stop all three threads from calling the same method, on the same object, at
-the same time. This is known as a race condition, because the three threads are racing each
-other to complete the method
-*/
+/* fixing of the preceding NotSynchronzied program, we must serialize access to call( ).
+* Simply add synchronized keyword in methods */
 
-class Callme{
+class Callmee {
     //Method that revieces and tries to print the message in square brackets.
-    void callMe(String msg){
+    synchronized void callMe(String msg){
 //        It prints the opening bracket and message then the tread is put to sleep
         System.out.print("[" + msg);
         //Putting the thread to sleep
@@ -25,13 +20,13 @@ class Callme{
     }
 }
 
-class Caller implements Runnable{
+class Callerr implements Runnable{
     String msg; //Stores the msg
-    Callme target; //Creating an object of Callme function
+    Callmee target; //Creating an object of Callme function
     Thread t; //Creating an object of Thread
 
     //On creating an instance of Caller,
-    public Caller(Callme targ, String txt){
+    public Callerr(Callmee targ, String txt){
         target = targ; //Assign the target to it
         msg = txt;
         t = new Thread(this); //Create a thread for the invoking object
@@ -43,15 +38,15 @@ class Caller implements Runnable{
         target.callMe(msg);
     }
 }
-public class NotSynchronized {
+public class SynchronizedMethod {
     public static void main(String[] args) {
         //Creating an instance of the object
-        Callme target = new Callme();
+        Callmee target = new Callmee();
         //Creating a caller and passing it the instance of the target object
         //The method in target object are called by multiple threads.
-        Caller caller1 = new Caller(target, "Hello");
-        Caller caller2 = new Caller(target, "Synchronized");
-        Caller caller3 = new Caller(target, "World");
+        Callerr caller1 = new Callerr(target, "Hello");
+        Callerr caller2 = new Callerr(target, "Synchronized");
+        Callerr caller3 = new Callerr(target, "World");
 
         //Starting allthe threads .
         caller1.t.start();
@@ -68,15 +63,3 @@ public class NotSynchronized {
         }
     }
 }
-/*The output will be:
-[Hello
-[World
-[Synchronized
-]
-]
-]
-
-It is because after the first threads msg is printed, it goes to sleep and 2nd thread comes to play.
-Then after 2nd thread prints the msg, is goes to sleep and third comes to play before printing ].
-Then after the threads wake up, they gain the CPU again and print the ].
-*/

@@ -28,8 +28,12 @@ This repo contains the code done while learning multithreading in Java.
 that the resource will be used by only one thread at a time. The process by which this is 
 achieved is called <i>synchronization</i>. There is <b><i>NotSynchronized.java</i></b> file to demonstrate what happens when the methods are not synchronized.
     <ul>
-        <li><b> :</b></li>
-        <li><b> :</b></li>
+        <li><b> Using Synchronized Methods:</b>To serialize access to methods, use synchronized keyword in front of methods.</li> Synchronization is shown in <b><i>SynchronizedMethod.java</i></b> file.
+        <li><b> Synchronized Statements:</b> Imagine that we want to synchronize access to objects of a class that was not 
+designed for multithreaded access. Further, this class was not created by us, but by a third party, and we do not have access to 
+the source code. Thus, you can’t add synchronized to the appropriate methods within the 
+class. We simply put calls to the methods defined by this class inside a 
+synchronized block. Its in <b><i>SynchronizedBlock.java</i></b>file.</li>
     </ul>
 </li>
 
